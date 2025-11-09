@@ -25,7 +25,6 @@ public class Employee {
         this.proSubj = proSubj;  // he, she, they
         this.proObj = proObj;// her, him them
 
-
         this.address = address;
         this.choose = choose;
         this.age = age;
@@ -36,26 +35,47 @@ public class Employee {
         this.totalSalary = totalSalary;
         this.numEmployees = numEmployees;
     }
-
-   
+    // Getters
     public String getFullName() { 
         return fName + " " + lName; 
     }
     public String getPossAdj() { 
         return proPossAdj;
      }
-    public String getSubj() { return proSubj; }
+    public String getSubj() { 
+        return proSubj;
+     }
 
-    public String getObj() { return proObj; }
-    public String getAddress() { return address; }
-    public boolean getChoice() { return choose; }
-    public int getAge() { return age; }
-    public int getMiles() { return miles; }
-    public int getPunchIn() { return punchIn; }
-    public int getPunchOut() { return punchOut; }
-    public int getHourlyRate() { return hourlyRate; }
-    public int getTotalSalary() { return totalSalary; }
-    public int getNumEmployees() { return numEmployees; }
+    public String getObj() {
+         return proObj;
+         }
+    public String getAddress() { 
+        return address;
+     }
+    public boolean getChoice() { 
+        return choose;
+     }
+    public int getAge() { 
+        return age; 
+    }
+    public int getMiles() { 
+        return miles;
+     }
+    public int getPunchIn() {
+         return punchIn;
+         }
+    public int getPunchOut() {
+         return punchOut; 
+        }
+    public int getHourlyRate() {
+         return hourlyRate; 
+        }
+    public int getTotalSalary() { 
+        return totalSalary; 
+    }
+    public int getNumEmployees() {
+         return numEmployees;
+        }
 
 
     // Setters can be added if needed
@@ -102,6 +122,4 @@ public class Employee {
     public void setNumEmployees(int numEmployees) { 
         this.numEmployees = numEmployees; 
     }
-
-
 }
