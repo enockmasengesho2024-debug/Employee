@@ -50,8 +50,6 @@ public class Main {
         // Summaries
         StoryEngine.summary(emp);
         StoryEngine.summary(emp.getFullName());
-
-        // New Story Chapter/Section: Bonus Evaluation
         StoryEngine.bonusChapter(emp);
         
         
