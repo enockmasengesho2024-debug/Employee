@@ -141,7 +141,7 @@ for (String dept : company) {
 4. - Add more story branches (promotion, remote work, etc.).
 5. - delete or update the data of employee
 6. - search the name of employee
-7. - history
+7. - history 
 8. - export or print the employee records
 * And also, it will have employee options like tracking the salary, comments, Etc.
 ## Author

@@ -78,7 +78,7 @@ public class Employee {
         }
 
 
-    // Setters can be added if needed
+    // Setters 
     public void setFullName(String fName, String lName) { 
         this.fName = fName;
         this.lName = lName;

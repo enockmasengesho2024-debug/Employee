@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         InputHelper helper = new InputHelper();
 
-        // Collect user input
+        // Collection of  user input
         String fName = helper.getString("Enter your first name: ");
         String lName = helper.getString("Enter your last name: ");
         String proPossAdj = helper.getString("Choose a possessive adjective (his/her/their): ");
@@ -22,22 +22,29 @@ public class Main {
 
         // Arrays
         String[] company = {"Marketing", "Finance", "Human Resources", "Customer Service", "Training", "Recruiting"};
-        String[] storyPaths = {
-            "Take on a big new project for the company.",
-            "Help train a new employee.",
-            "Fix a critical computer issue in the IT department.",
-            "Join a team meeting to share a new product idea."
-        };
-
-        // Create Employee object
+        
+        //  Employee object
         Employee emp = new Employee(fName, lName, proPossAdj, proSubj, proObj, address, choose, age, miles, punchIn, punchOut, hourlyRate, totalSalary, numEmployees);
 
         // Display story
         StoryEngine.introduction(emp, company);
 
-        // Story choice
-        int choice = helper.getValidatedInt("What will you do today? (Enter 1-" + storyPaths.length + "): ", 1, storyPaths.length);
-        StoryEngine.resolveChoice(choice, storyPaths);
+
+        //  polymorphic story options
+        StoryNode[] storyOptions = StoryEngine.buildStoryOptions();
+
+        System.out.println("\nWhat will you do today?");
+        for (int i = 0; i < storyOptions.length; i++) {
+            System.out.println((i + 1) + ". " + storyOptions[i].getTitle());
+        }
+
+        int choice = helper.getValidatedInt(
+                "Enter your choice (1-" + storyOptions.length + "): ",
+                1,
+                storyOptions.length
+        );
+
+        StoryEngine.resolveChoice(choice, storyOptions, emp);
 
         // Salary Report
         double mileageReimbursement = StoryEngine.computeMileageReimbursement(miles);
