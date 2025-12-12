@@ -5,9 +5,9 @@ public class IdeaMeetingNode extends StoryNode {
     }
 
     @Override
-    public void play(Employee emp) {
-        System.out.println("Your ideas in the meeting inspire the team "
-                + "to create a new product!");
+    public String getSceneText(Employee emp) {
+        return "Your ideas in the meeting inspire the team "
+             + "to create a new product!";
     }
 }
 

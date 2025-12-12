@@ -10,7 +10,6 @@ public abstract class StoryNode {
     public String getTitle() {
         return title;
     }
-
     public StoryNode[] getNextNodes() {
         if (nextNodes == null) {
             return new StoryNode[0];
@@ -22,6 +21,9 @@ public abstract class StoryNode {
         return getNextNodes().length == 0;
     }
 
-    // hild override method
-    public abstract void play(Employee emp);
+    public abstract String getSceneText(Employee emp);
+
+    public void play(Employee emp) {
+        System.out.println(getSceneText(emp));
+    }
 }

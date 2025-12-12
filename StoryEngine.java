@@ -43,35 +43,79 @@ public class StoryEngine {
   // inheritance/polymorphism core
 
     public static StoryNode[] buildStoryOptions() {
-        
-        StoryNode wellness = new WellnessEventNode(
-                "Lead a company wellness event",
-                null
-        );
 
-        StoryNode ideaMeeting = new IdeaMeetingNode(
-                "Join a team meeting to share a new product idea",
-                new StoryNode[] { wellness }
-        );
+    // ---- Ending scenes (no children) ----
+    StoryNode promotionEnd = new PromotionEndingNode(
+            "Promotion Celebration",
+            null
+    );
 
-        StoryNode fixIssue = new FixIssueNode(
-                 "Fix a critical computer issue in the IT department",
-                new StoryNode[] { ideaMeeting }
-        );
+    StoryNode mentorAwardEnd = new MentorAwardEndingNode(
+            "Mentor of the Year Ceremony",
+            null
+    );
 
-        StoryNode trainEmployee = new TrainingNode(
-                "Help train a new employee",
-                new StoryNode[] { fixIssue }
-        );
+    StoryNode burnoutEnd = new BurnoutEndingNode(
+            "Warning Signs of Burnout",
+            null
+    );
 
-        StoryNode bigProject = new BigProjectNode(
-                "Take on a big new project for the company",
-                new StoryNode[] { trainEmployee }
-        );
+    StoryNode wellnessChampionEnd = new WellnessChampionEndingNode(
+            "Wellness Champion Celebration",
+            null
+    );
 
-        // Polymorphic collection, all StoryNode
-        return new StoryNode[] { bigProject, trainEmployee, fixIssue, ideaMeeting, wellness };
-    }
+    // ---- Mid-story scenes ----
+    StoryNode lateNight = new LateNightNode(
+            "Stay late to finish the project",
+            new StoryNode[] { promotionEnd }
+    );
+
+    StoryNode mentorship = new MentorshipNode(
+            "Start mentoring a junior teammate",
+            new StoryNode[] { mentorAwardEnd }
+    );
+
+    StoryNode onCallWeekend = new OnCallWeekendNode(
+            "Cover an emergency on-call weekend",
+            new StoryNode[] { burnoutEnd }
+    );
+
+    StoryNode teamBuilding = new TeamBuildingNode(
+            "Host a team-building workshop",
+            new StoryNode[] { wellnessChampionEnd }
+    );
+
+    // Your existing top-level scenes, now connected 
+    StoryNode wellness = new WellnessEventNode(
+            "Lead a company wellness event",
+            new StoryNode[] { teamBuilding }
+    );
+
+    StoryNode ideaMeeting = new IdeaMeetingNode(
+            "Join a team meeting to share a new product idea",
+            new StoryNode[] { wellness }
+    );
+
+    StoryNode fixIssue = new FixIssueNode(
+            "Fix a critical computer issue in the IT department",
+            new StoryNode[] { onCallWeekend }
+    );
+
+    StoryNode trainEmployee = new TrainingNode(
+            "Help train a new employee",
+            new StoryNode[] { mentorship }
+    );
+
+    // Big project can branch to either staying late or pivoting into the idea-meeting path
+    StoryNode bigProject = new BigProjectNode(
+            "Take on a big new project for the company",
+            new StoryNode[] { lateNight, ideaMeeting }
+    );
+
+    // These are the first choices the player sees
+    return new StoryNode[] { bigProject, trainEmployee, fixIssue, ideaMeeting, wellness };
+}
 
     //   recursive, polymorphic experience 
 

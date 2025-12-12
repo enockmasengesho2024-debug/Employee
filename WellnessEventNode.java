@@ -5,9 +5,8 @@ public class WellnessEventNode extends StoryNode {
     }
 
     @Override
-    public void play(Employee emp) {
-        System.out.println("You lead a company wellness event. "
-                + "The office is full of energy and positivity!");
+    public String getSceneText(Employee emp) {
+        return "You lead a company wellness event. "
+             + "The office is full of energy and positivity!";
     }
 }
-

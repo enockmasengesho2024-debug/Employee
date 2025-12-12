@@ -5,9 +5,10 @@ public class FixIssueNode extends StoryNode {
     }
 
     @Override
-    public void play(Employee emp) {
-        System.out.println("You solve a critical system issue! "
-                + "The IT team celebrates your quick thinking.");
+    public String getSceneText(Employee emp) {
+        return "You solved a critical system issue! "
+             + "The IT team celebrates your quick thinking.";
     }
 }
+
 
