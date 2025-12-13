@@ -113,15 +113,7 @@ After the main company adventure concludes, the program continues into a new sec
 - The company reviews your performance.
 - Your miles driven and total salary determine your bonus.
 - Encouraging messages appear depending on your results.
-  - **examole**
-
-  if (emp.getMiles() > 40 && emp.getTotalSalary() > 150) {
-    System.out.println("Congratulations! You earned a $50 performance bonus!");
-} else if (emp.getMiles() >= 25) {
-    System.out.println("Nice effort! You earned a $25 performance bonus!");
-} else {
-    System.out.println("Keep going! No bonus this time, but your dedication is noted.");
-}
+  
 ##  Example of Loops and Arrays ##
   String[] company = {"Marketing", "Finance", "HR", "Customer Service", "Training", "Recruiting"};
   String[] storyPaths = {

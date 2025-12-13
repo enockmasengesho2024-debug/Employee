@@ -44,7 +44,7 @@ public class StoryEngine {
 
     public static StoryNode[] buildStoryOptions() {
 
-    // ---- Ending scenes (no children) ----
+    // Ending scenes 
     StoryNode promotionEnd = new PromotionEndingNode(
             "Promotion Celebration",
             null
@@ -65,7 +65,7 @@ public class StoryEngine {
             null
     );
 
-    // ---- Mid-story scenes ----
+    //  Mid-story scenes 
     StoryNode lateNight = new LateNightNode(
             "Stay late to finish the project",
             new StoryNode[] { promotionEnd }
@@ -86,7 +86,7 @@ public class StoryEngine {
             new StoryNode[] { wellnessChampionEnd }
     );
 
-    // Your existing top-level scenes, now connected 
+    //  top-level scenes, leading to mid-story scenes
     StoryNode wellness = new WellnessEventNode(
             "Lead a company wellness event",
             new StoryNode[] { teamBuilding }
@@ -107,41 +107,41 @@ public class StoryEngine {
             new StoryNode[] { mentorship }
     );
 
-    // Big project can branch to either staying late or pivoting into the idea-meeting path
+    
     StoryNode bigProject = new BigProjectNode(
             "Take on a big new project for the company",
             new StoryNode[] { lateNight, ideaMeeting }
     );
 
-    // These are the first choices the player sees
+    
     return new StoryNode[] { bigProject, trainEmployee, fixIssue, ideaMeeting, wellness };
 }
 
-    //   recursive, polymorphic experience 
+     
 
-    //  play the story path (void)
+    
     public static void playStoryFrom(StoryNode node, Employee emp) {
         if (node == null) {
-            return; // base case
+            return; 
         }
 
-        // Polymorphic call – actual version depends on child type
+        
         node.play(emp);
 
         for (StoryNode child : node.getNextNodes()) {
-            playStoryFrom(child, emp); // recursive call
+            playStoryFrom(child, emp); 
         }
     }
 
     //  Scalar result (int)
     public static int countChapters(StoryNode node) {
         if (node == null) {
-            return 0; // base case
+            return 0; 
         }
 
-        int total = 1; // count this node
+        int total = 1; 
         for (StoryNode child : node.getNextNodes()) {
-            total += countChapters(child); // recursive call
+            total += countChapters(child); 
         }
         return total;
     }
@@ -154,17 +154,17 @@ public class StoryEngine {
 
     private static void collectChapterTitlesHelper(StoryNode node, List<String> titles) {
         if (node == null) {
-            return; // base case
+            return; 
         }
 
         titles.add(node.getTitle());
 
         for (StoryNode child : node.getNextNodes()) {
-            collectChapterTitlesHelper(child, titles); // recursive call
+            collectChapterTitlesHelper(child, titles); 
         }
     }
 
-    // Updated resolveChoice: uses polymorphism and recursion
+    
     public static void resolveChoice(int choice, StoryNode[] options, Employee emp) {
         if (choice < 1 || choice > options.length) {
             System.out.println("\nYou decide to take it easy today. Everyone needs a rest sometimes!");

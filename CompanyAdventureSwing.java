@@ -25,7 +25,7 @@ public class CompanyAdventureSwing extends JFrame {
         setTitle("Company Adventure");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 500);
-        setLocationRelativeTo(null); // center on screen
+        setLocationRelativeTo(null); 
 
         // Start with the setup screen
         showSetupPanel();
